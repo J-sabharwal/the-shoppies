@@ -1,10 +1,11 @@
-html {
-  height: 100%;
+html{
+  min-height: 110%;
+  background-size: cover;
 }
 
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   position: absolute;
@@ -23,3 +24,48 @@ html {
   margin-bottom: 3vh;
 }
 
+.query {
+  color: #fefefe;
+  margin: 3% 5% 2% 11%;
+}
+
+.movie-card {
+  margin: 0.2% 11% ;
+}
+
+.movie {
+  display: flex;
+  color: #fefefe;
+  margin-bottom: 0.3rem;
+}
+
+.movie-thumbnail {
+  height: 5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  padding-left: 1rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  background: #302e41;
+  overflow: hidden;
+}
+
+.movie-info:hover {
+  background: rgba(182, 21, 64, 0.4);
+}
+
+.movie-title {
+  font-weight: 300;
+  font-weight: bolder;
+}
+
+.movie-year {
+  font-size: 0.8rem;
+}
