@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logo from './the_shoppies.png';
+import logo from './logo.png';
 import './App.css';
 import axios from "axios";
 import SearchBar from './components/searchBar';
@@ -36,7 +36,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <SearchBar query={searchQuery}/>
-      {data.query && data.query ? 
+      {data.query && data.query && data.data !== undefined ? 
       <h3 className="query">{`Results for "${data.query}"`}</h3> : null}
         <SearchResults data={data} query={data.query}/>
     </div>
