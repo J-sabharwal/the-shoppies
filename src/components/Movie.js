@@ -1,5 +1,6 @@
 import React from "react";
-import { Col, Row, Button } from 'reactstrap';
+import { Col, Button } from 'reactstrap';
+import display from '../display.jpg'
 
 function Movie(props) {
 
@@ -9,7 +10,7 @@ function Movie(props) {
       <div className="movie-card">
         <Col xs={6} >
           <article className="movie">
-            <img className="movie-thumbnail" src={props.Poster} alt="Movie" />
+            <img className="movie-thumbnail" src={props.Poster !== "N/A" ? props.Poster : display} alt="Movie" />
             <div className="movie-info">
               <div className="movie-title">{props.Title}</div>
               <div className="movie-year">{props.Year}</div>

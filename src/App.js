@@ -38,7 +38,7 @@ function App() {
       <SearchBar query={searchQuery}/>
       {data.query && data.query ? 
       <h3 className="query">{`Results for "${data.query}"`}</h3> : null}
-      <SearchResults data={data} query={data.query}/>
+        <SearchResults data={data} query={data.query}/>
     </div>
   );
 }

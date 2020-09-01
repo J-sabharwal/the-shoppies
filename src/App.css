@@ -41,6 +41,7 @@ html{
 
 .movie-thumbnail {
   height: 5rem;
+  width: 4rem;
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
