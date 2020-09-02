@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import logo from './the_shoppies.png';
+import logo from './logo.png';
 import './App.css';
 import axios from "axios";
 import SearchBar from './components/searchBar';
+import SearchResults from './components/searchResults';
 
 function App() {
   const [data, setData] = useState({
@@ -22,6 +23,7 @@ function App() {
             ...prev,
             data: response.data.Search,
             totalPages: Math.ceil(parseInt(response.data.totalResults) / 10),
+            query: searchText,
           }));
         }
       )};
@@ -34,6 +36,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <SearchBar query={searchQuery}/>
+      {data.query && data.query && data.data !== undefined ? 
+      <h3 className="query">{`Results for "${data.query}"`}</h3> : null}
+        <SearchResults data={data} query={data.query}/>
     </div>
   );
 }
