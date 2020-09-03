@@ -81,12 +81,12 @@ function App() {
       <Row>
         <Col xs={6}>
         {data.query && data.query && data.error === null ? 
-          <h3 className="query">{`Results for "${data.query}"`}</h3> : null}
+          <h3 className="results-list">{`Results for "${data.query}"`}</h3> : null}
           <SearchResults data={data} query={data.query} nomination={nominatedMovies}/>
         </Col>
           {nominated && nominated.count > 0 ? 
             <Col xs ={6}>
-              <h3 className="query">{`Nominated Movies`}</h3>
+              <h3 className="nominations-list">{`Nominated Movies`}</h3>
               <NominatedMovies data={nominated}/>
           </Col> : null }
       </Row>
