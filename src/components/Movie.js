@@ -26,13 +26,27 @@ function Movie(props) {
       <div className="movie-card">
         {/* <Col xs={6} > */}
           <article className="movie" key={props.imdbID}>
-            <img className="movie-thumbnail" src={props.Poster !== "N/A" ? props.Poster : display} alt="Movie" />
+            <img
+              className="movie-thumbnail" 
+              src={props.Poster !== "N/A" ? props.Poster : display} 
+              alt="Movie"
+            />
             <div className="movie-info">
               <div className="movie-title">{props.Title}</div>
               <div className="movie-year">{props.Year}</div>
             </div>
             <div>
-              <Button className="nominate-btn" color="secondary" onClick={() => nomination(props)} type="submit">Nominate</Button>
+              <Button 
+                className="nominate-btn" 
+                color="secondary" 
+                style={{
+                  borderRadius: "0 0.5rem 0.5rem 0"}
+                } 
+                onClick={() => nomination(props)} 
+                type="submit"
+              >
+                Nominate
+              </Button>
             </div>
           </article>
         {/* </Col> */}

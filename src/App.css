@@ -3,10 +3,6 @@ html{
   background-size: cover;
 }
 
-.App {
-  margin: 0% 3%;
-}
-
 .App-logo {
   position: absolute;
   top: 5vh;
@@ -26,20 +22,20 @@ html{
 
 .results-list {
   color: #fefefe;
-  margin: 3% 5% 2% 23%;
+  margin: 3% 5% 2% 24%;
 }
 
 .nominations-list {
   color: #fefefe;
-  margin: 3% 23% 2% 5%;
+  margin: 3% 24% 2% 5%;
 }
 
 .movie-card {
-  margin: 0.2% 0% 0.2% 23%;
+  margin: 0.2% 0% 0.2% 24%;
 }
 
 .nomination-card {
-  margin: 0.2% 23% 0.2% 5%;
+  margin: 0.2% 24% 0.2% 5%;
 }
 
 .movie {
@@ -65,6 +61,11 @@ html{
   overflow: hidden;
 }
 
+.movie-info.nominee {
+  background: #6c6a85;
+
+}
+
 .movie-info:hover {
   background: rgba(182, 21, 64, 0.4);
 }
@@ -80,5 +81,4 @@ html{
 
 .nominate-btn {
   height: 5rem;
-  /* border-radius: 0rem 0.5rem 0rem 0.5rem; */
 }
