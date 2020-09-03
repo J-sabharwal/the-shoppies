@@ -66,7 +66,24 @@ function App() {
         max: true,
       }));
     }
+    console.log(nominated)
   };
+
+  const removeNomination = (movie) => {
+    const movieArray = nominated.movieList.forEach((movieElement, index) => {
+      if (movie.imdbID === movieElement.imdbID) {
+        
+        nominated.movieList.splice(index, 1)
+        setNominated(prev => ({
+          ...prev, 
+          movieList: nominated.movieList,
+          count: nominated.count - 1,
+        }))
+      }
+    })
+    console.log(nominated.movieList)
+    return movieArray;
+  }
 
   return (
     <div className="App">
@@ -89,7 +106,7 @@ function App() {
         {nominated && nominated.count > 0 ? (
           <Col xs={6}>
             <h3 className="nominations-list">{`Nominated Movies`}</h3>
-            <NominatedMovies data={nominated} />
+            <NominatedMovies data={nominated} deleteMovie={removeNomination}/>
           </Col>
         ) : null}
       </Row>
