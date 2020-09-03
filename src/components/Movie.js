@@ -1,36 +1,43 @@
 import React from "react";
-import { Col, Button } from 'reactstrap';
-import display from '../display.jpg'
+import { Button } from "reactstrap";
+import display from "../display.jpg";
 
 function Movie(props) {
+  const nominateMovie = props.toNominate;
+  const isNominated = props.isNominated;
+  const { imdbID, Poster, Title, Year } = props;
 
-  console.log(props)
   return (
     <div>
       <div className="movie-card">
-        <Col xs={6} >
-          <article className="movie">
-            <img className="movie-thumbnail" src={props.Poster !== "N/A" ? props.Poster : display} alt="Movie" />
-            <div className="movie-info">
-              <div className="movie-title">{props.Title}</div>
-              <div className="movie-year">{props.Year}</div>
-            </div>
-          </article>
-        </Col>
-      </div>
-      <div className="movie-card">
-        <Col xs={6} >
-          <article className="movie-nomination">
-            {/* <img className="movie-thumbnail" src={props.Poster} alt="Movie" />
-            <div className={props.id}>
-              <div className="movie-title">{props.Title}</div>
-              <div className="movie-year">{props.Year}</div>
-            </div> */}
-          </article>
-        </Col>
+        <article className="movie" key={imdbID}>
+          <img
+            className="movie-thumbnail"
+            src={Poster !== "N/A" ? Poster : display}
+            alt="Movie"
+          />
+          <div className="movie-info">
+            <div className="movie-title">{Title}</div>
+            <div className="movie-year">{Year}</div>
+          </div>
+          <div>
+            <Button
+              className="nominate-btn"
+              color="secondary"
+              style={{
+                borderRadius: "0 0.5rem 0.5rem 0",
+              }}
+              onClick={() => nominateMovie(props)}
+              disabled={isNominated ? true : false}
+              type="submit"
+            >
+              Nominate
+            </Button>
+          </div>
+        </article>
       </div>
     </div>
   );
-}
+};
 
 export default Movie;

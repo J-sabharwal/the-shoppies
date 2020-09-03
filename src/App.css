@@ -1,11 +1,8 @@
 html{
-  min-height: 110%;
+  min-height: 150%;
   background-size: cover;
+ padding-bottom: 5%;
 }
-
-/* .App {
-  text-align: center;
-} */
 
 .App-logo {
   position: absolute;
@@ -14,7 +11,7 @@ html{
 }
 
 .App-header {
-  height: 25vh;
+  height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,24 +21,34 @@ html{
   margin-bottom: 3vh;
 }
 
-.query {
+.results-list {
   color: #fefefe;
-  margin: 3% 5% 2% 11%;
+  margin: 3% 5% 2% 24%;
+}
+
+.nominations-list {
+  color: #fefefe;
+  margin: 3% 24% 2% 5%;
 }
 
 .movie-card {
-  margin: 0.2% 11% ;
+  margin: 0.2% 0% 0.2% 24%;
+}
+
+.nomination-card {
+  margin: 0.2% 24% 0.2% 5%;
 }
 
 .movie {
   display: flex;
+  height: 4.5rem;
   color: #fefefe;
   margin-bottom: 0.3rem;
 }
 
 .movie-thumbnail {
-  height: 5rem;
-  width: 4rem;
+  height: 4.5rem;
+  width: 3.5rem;
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
@@ -52,10 +59,13 @@ html{
   justify-content: center;
   width: 90%;
   padding-left: 1rem;
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
   background: #302e41;
   overflow: hidden;
+}
+
+.movie-info.nominee {
+  background: #6c6a85;
+
 }
 
 .movie-info:hover {
@@ -69,4 +79,8 @@ html{
 
 .movie-year {
   font-size: 0.8rem;
+}
+
+.nominate-btn {
+  height: 4.5rem;
 }

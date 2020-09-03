@@ -1,32 +1,32 @@
 import React, { useState } from 'react';
 import './searchBar.css';
-import { Col, Button, Form, InputGroup, InputGroupAddon, Input } from 'reactstrap';
+import { Col, Button, InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 function SearchBar(props) {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [query, setQuery] = useState("");
 
   const handleSubmit = (event) => {
-    setSearchQuery(event.target.value)
+    setQuery(event.target.value)
   };
   
   const Search = (event) => {
     event.preventDefault();
-    props.query(searchQuery);
+    props.query(query);
     resetSearchField();
   }
 
   const resetSearchField = () => {
-    setSearchQuery("")
+    setQuery("")
   }
   
   return (
     <div id="movie-input">
       <Col md={12} >
-        <InputGroup>
+        <InputGroup size="lg">
           <Input
             type="text"
             placeholder="Search by name" 
-            value={searchQuery}
+            value={query}
             onChange={handleSubmit}
           />
           <InputGroupAddon addonType="append">
