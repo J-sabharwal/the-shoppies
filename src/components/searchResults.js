@@ -22,10 +22,10 @@ function SearchResults(props) {
 
   if (results.error) {
     return (
-      <h4 className="query">
+      <h4 className="results-list">
         {results.error === "Too many results."
           ? `${results.error} Please narrow your search and try again!`
-          : `${results.error} Please try another search!`}
+          : `${results.error} Please refine your search and try again!`}
       </h4>
     );
   } else {

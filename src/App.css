@@ -23,11 +23,13 @@ html{
 
 .results-list {
   color: #fefefe;
+  font-size: 1.3rem;
   margin: 3% 5% 2% 24%;
 }
 
 .nominations-list {
   color: #fefefe;
+  font-size: 1.3rem;
   margin: 3% 24% 2% 5%;
 }
 
@@ -83,4 +85,10 @@ html{
 
 .nominate-btn {
   height: 4.5rem;
+}
+
+.pagination-btn{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 5% 35% 0 35%;
 }

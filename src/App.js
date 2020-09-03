@@ -5,7 +5,7 @@ import axios from "axios";
 import SearchBar from "./components/searchBar";
 import SearchResults from "./components/searchResults";
 import NominatedMovies from "./components/NominatedMovies";
-import { Col, Row } from "reactstrap";
+import { Col, Row, Button } from "reactstrap";
 
 function App() {
   const [data, setData] = useState({
@@ -102,6 +102,50 @@ function App() {
             nominateMovie={nominatedMovies}
             contender={nominated}
           />
+          {data.totalPages && data.totalPages > 1 ?
+          <Col xs={6} className="pagination-btn">
+            <Button
+              className="previous-btn"
+              color="warning"
+              style={{
+                borderRadius: "0.5rem 0 0 0.5rem",
+              }}
+              type="submit"
+            >
+            {'<<'}
+            </Button>
+            <Button
+              className="previous-btn"
+              color="secondary"
+              style={{
+                borderRadius: "0 0 0 0",
+              }}
+              type="submit"
+            >
+            Previous Page
+            </Button>
+            <Button
+                className="next-btn"
+                color="secondary"
+                style={{
+                  borderRadius: "0 0 0 0",
+                }}
+                type="submit"
+              >
+              Next Page
+            </Button>
+            <Button
+              className="previous-btn"
+              color="warning"
+              style={{
+                borderRadius: "0 0.5rem 0.5rem 0",
+              }}
+              type="submit"
+            >
+            {'>>'}
+            </Button>
+          </Col>
+            : null}
         </Col>
         {nominated && nominated.count > 0 ? (
           <Col xs={6}>
