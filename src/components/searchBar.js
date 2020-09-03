@@ -13,11 +13,19 @@ function SearchBar(props) {
     event.preventDefault();
     props.query(query);
     resetSearchField();
-  }
+  };
+
+  const onKeyPress = (event) => {
+    if (event.which === 13) {
+      event.preventDefault();
+      props.query(query);
+      resetSearchField();
+    };
+  };
 
   const resetSearchField = () => {
     setQuery("")
-  }
+  };
   
   return (
     <div id="movie-input">
@@ -28,9 +36,17 @@ function SearchBar(props) {
             placeholder="Search by name" 
             value={query}
             onChange={handleSubmit}
+            onKeyPress={onKeyPress}
           />
           <InputGroupAddon addonType="append">
-            <Button color="warning" onClick={Search} type="submit">Search</Button>
+            <Button 
+              color="warning" 
+              onSubmit={Search} 
+              onClick={Search} 
+              type="submit"
+            >
+              Search
+            </Button>
           </InputGroupAddon>
         </InputGroup>
       </Col>
