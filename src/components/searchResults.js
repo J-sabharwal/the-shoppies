@@ -1,20 +1,46 @@
-import React from 'react';
-import './searchResults.css';
-import Movie from './Movie';
+import React from "react";
+import "./searchResults.css";
+import Movie from "./Movie";
 
 function SearchResults(props) {
   const results = props.data;
-  const nomination = props.nomination;
-  // console.log(props)
+  const nominationFunction = props.nominateMovie;
+  const nominees = props.contender.movieList;
+
+  const isNominated = (movieId) => {
+    let isANominee = false;
+
+    nominees.forEach((nominee) => {
+      if (movieId === nominee.imdbID) {
+        isANominee = true;
+      } else {
+        return isANominee;
+      }
+    });
+    return isANominee;
+  };
 
   if (results.error) {
-
-    return <h4 className="query">{results.error === "Too many results." ? `${results.error} Please narrow your search and try again!` : `${results.error} Please try another search!`}</h4>;
-
+    return (
+      <h4 className="query">
+        {results.error === "Too many results."
+          ? `${results.error} Please narrow your search and try again!`
+          : `${results.error} Please try another search!`}
+      </h4>
+    );
   } else {
+    return results.data.map((movie) => {
+      const movieId = movie.imdbID;
+      const nominated = isNominated(movie.imdbID);
 
-    return results.data.map(movie => {
-      return <Movie key={movie.imdbID} {...movie} nomination={nomination} />;
+      return (
+        <Movie
+          key={movieId}
+          {...movie}
+          isNominated={nominated}
+          toNominate={nominationFunction}
+        />
+      );
     });
   };
 };
