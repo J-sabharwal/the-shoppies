@@ -3,7 +3,9 @@ import { Button } from "reactstrap";
 import display from "../display.jpg";
 
 function NominatedMovies(props) {
+  console.log(props)
   const moviesArray = props.data.movieList;
+  const deleteMovie = props.deleteMovie;
 
   return (
     moviesArray &&
@@ -30,6 +32,7 @@ function NominatedMovies(props) {
                     borderRadius: "0 0.5rem 0.5rem 0",
                     backgroundColor: "rgb(104, 34, 34)",
                   }}
+                  onClick={() => deleteMovie(movie)}
                   type="submit"
                 >
                   Remove
