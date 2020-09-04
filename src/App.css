@@ -1,12 +1,14 @@
-html{
+html {
   min-height: 150%;
   background-size: cover;
- padding-bottom: 5%;
+  padding-bottom: 5%;
+  overflow-x: hidden;
 }
 
 .App-logo {
-  position: absolute;
-  top: 5vh;
+  display: grid;
+  height: 17vh;
+  margin-top: auto;
   pointer-events: none;
 }
 
@@ -24,33 +26,34 @@ html{
 .results-list {
   color: #fefefe;
   font-size: 1.3rem;
-  margin: 3% 5% 2% 24%;
+  margin: 3% 5% 1% 24%;
 }
 
 .nominations-list {
   color: #fefefe;
   font-size: 1.3rem;
-  margin: 3% 24% 2% 5%;
+  margin: 4% 24% 8.5% 5%;
 }
 
 .movie-card {
-  margin: 0.2% 0% 0.2% 24%;
+  margin: 0.2% 0% 0.1% 24%;
 }
 
 .nomination-card {
-  margin: 0.2% 24% 0.2% 5%;
+  margin: 0.2% 24% 0.2% 0%;
 }
 
 .movie {
   display: flex;
-  height: 4.5rem;
+  justify-content: center;
+  height: 5rem;
   color: #fefefe;
   margin-bottom: 0.3rem;
 }
 
 .movie-thumbnail {
-  height: 4.5rem;
-  width: 3.5rem;
+  height: 100%;
+  width: 60px;
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
@@ -60,6 +63,7 @@ html{
   flex-direction: column;
   justify-content: center;
   width: 90%;
+  height: 100%;
   padding-left: 1rem;
   background: #302e41;
   overflow: hidden;
@@ -67,7 +71,6 @@ html{
 
 .movie-info.nominee {
   background: #6c6a85;
-
 }
 
 .movie-info:hover {
@@ -75,20 +78,69 @@ html{
 }
 
 .movie-title {
-  font-weight: 300;
+  font-size: 85%;
   font-weight: bolder;
 }
 
 .movie-year {
-  font-size: 0.8rem;
-}
-
-.nominate-btn {
-  height: 4.5rem;
+  font-size: 70%;
 }
 
 .pagination-btn{
   display: flex;
-  justify-content: space-evenly;
-  margin: 5% 35% 0 35%;
+  justify-content: center;
+  margin: 2% 10% 2% 10%;
+  gap: 1%;
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 600px){
+  .App-logo {
+    height: 17vh;
+    margin-top: auto;
+  }
+
+  .results-list {
+    font-size: 95%;
+    margin: 2% 4% 0% 10%;
+  }
+
+  .nominations-list {
+    font-size: 95%;
+    margin: 4% 4% 3% 10%;
+  }
+  
+  .movie-card {
+    margin: 0.2% 10% 0% 10%;
+  }
+
+  .nomination-card {
+    margin: 0.2% 10% 0% 10%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .App-logo {
+    height: 14vh;
+    margin-top: auto;
+  }
+  .results-list, .nominations-list {
+    font-size: 90%;
+    margin: 3% 4% 2% 8%;
+  }
+
+  .movie-title, .movie-year{
+    font-size: 70%;
+  }
+
+  .movie-thumbnail {
+    width: 55px;
+  }
+
+  .movie-card {
+    margin: 0.2% 5% 0% 5%;
+  }
+
+  .nomination-card {
+    margin: 0.2% 5% 0% 5%;
+  }  
 }

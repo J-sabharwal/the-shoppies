@@ -3,9 +3,9 @@ import { Button } from "reactstrap";
 import display from "../display.jpg";
 
 function Movie(props) {
+  const { imdbID, Poster, Title, Year } = props;
   const nominateMovie = props.toNominate;
   const isNominated = props.isNominated;
-  const { imdbID, Poster, Title, Year } = props;
 
   return (
     <div>
@@ -26,6 +26,8 @@ function Movie(props) {
               color="secondary"
               style={{
                 borderRadius: "0 0.5rem 0.5rem 0",
+                fontSize: "70%",
+                height: "100%",
               }}
               onClick={() => nominateMovie(props)}
               disabled={isNominated ? true : false}

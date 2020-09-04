@@ -5,12 +5,13 @@ import axios from "axios";
 import SearchBar from "./components/searchBar";
 import SearchResults from "./components/searchResults";
 import NominatedMovies from "./components/NominatedMovies";
-import { Col, Row, Button } from "reactstrap";
+import Pagination from "./components/Pagination";
+import { Col, Row } from "reactstrap";
 
 function App() {
   const [data, setData] = useState({
     data: [],
-    page: 1,
+    currentPage: 1,
     totalPages: 0,
     type: "movie",
     error: null,
@@ -23,8 +24,9 @@ function App() {
     max: false,
   });
 
-  const searchQuery = (searchText) => {
-    const url = `http://www.omdbapi.com/?apikey=ad24814f&s=${searchText}&type=${data.type}&page=${data.page}`;
+  const searchQuery = (query, pageNumber = 1) => {
+    const searchText = query.trim();
+    const url = `http://www.omdbapi.com/?apikey=ad24814f&s=${searchText}&type=${data.type}&page=${pageNumber}`;
 
     async function fetchData() {
       axios.get(url).then((response) => {
@@ -38,6 +40,7 @@ function App() {
             totalPages: Math.ceil(parseInt(responseData.totalResults) / 10),
             query: searchText,
             response: requestResponse,
+            currentPage: pageNumber,
             error: null,
           }));
         } else {
@@ -47,9 +50,9 @@ function App() {
             query: searchText,
             response: requestResponse,
           }));
-        }
+        };
       });
-    }
+    };
     fetchData();
   };
 
@@ -65,25 +68,22 @@ function App() {
         ...prev,
         max: true,
       }));
-    }
-    console.log(nominated)
+    };
   };
 
   const removeNomination = (movie) => {
     const movieArray = nominated.movieList.forEach((movieElement, index) => {
       if (movie.imdbID === movieElement.imdbID) {
-        
-        nominated.movieList.splice(index, 1)
-        setNominated(prev => ({
-          ...prev, 
+        nominated.movieList.splice(index, 1);
+        setNominated((prev) => ({
+          ...prev,
           movieList: nominated.movieList,
           count: nominated.count - 1,
-        }))
+        }));
       }
-    })
-    console.log(nominated.movieList)
+    });
     return movieArray;
-  }
+  };
 
   return (
     <div className="App">
@@ -92,65 +92,22 @@ function App() {
       </header>
       <SearchBar query={searchQuery} />
       <Row>
-        <Col xs={6}>
+        <Col md={12} lg={6}>
           {data.query && data.query && data.error === null ? (
             <h3 className="results-list">{`Results for "${data.query}"`}</h3>
           ) : null}
+          <Pagination data={data} state={setData} fetchData={searchQuery} />
           <SearchResults
             data={data}
             query={data.query}
             nominateMovie={nominatedMovies}
             contender={nominated}
           />
-          {data.totalPages && data.totalPages > 1 ?
-          <Col xs={6} className="pagination-btn">
-            <Button
-              className="previous-btn"
-              color="warning"
-              style={{
-                borderRadius: "0.5rem 0 0 0.5rem",
-              }}
-              type="submit"
-            >
-            {'<<'}
-            </Button>
-            <Button
-              className="previous-btn"
-              color="secondary"
-              style={{
-                borderRadius: "0 0 0 0",
-              }}
-              type="submit"
-            >
-            Previous Page
-            </Button>
-            <Button
-                className="next-btn"
-                color="secondary"
-                style={{
-                  borderRadius: "0 0 0 0",
-                }}
-                type="submit"
-              >
-              Next Page
-            </Button>
-            <Button
-              className="previous-btn"
-              color="warning"
-              style={{
-                borderRadius: "0 0.5rem 0.5rem 0",
-              }}
-              type="submit"
-            >
-            {'>>'}
-            </Button>
-          </Col>
-            : null}
         </Col>
         {nominated && nominated.count > 0 ? (
-          <Col xs={6}>
+          <Col md={12} lg={6}>
             <h3 className="nominations-list">{`Nominated Movies`}</h3>
-            <NominatedMovies data={nominated} deleteMovie={removeNomination}/>
+            <NominatedMovies data={nominated} deleteMovie={removeNomination} />
           </Col>
         ) : null}
       </Row>
