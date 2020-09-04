@@ -4,8 +4,8 @@ import Movie from "./Movie";
 
 function SearchResults(props) {
   const results = props.data;
-  const nominationFunction = props.nominateMovie;
   const nominees = props.contender.movieList;
+  const nominationFunction = props.nominateMovie;
 
   const isNominated = (movieId) => {
     let isANominee = false;
