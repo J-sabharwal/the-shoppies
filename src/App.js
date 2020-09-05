@@ -6,9 +6,10 @@ import SearchBar from "./components/searchBar";
 import SearchResults from "./components/searchResults";
 import NominatedMovies from "./components/NominatedMovies";
 import Pagination from "./components/Pagination";
-import { Col, Row } from "reactstrap";
+import { Col, Row, Alert } from "reactstrap";
 
 function App() {
+  const [visible, setVisible] = useState(true);
   const [data, setData] = useState({
     data: [],
     currentPage: 1,
@@ -21,8 +22,9 @@ function App() {
   const [nominated, setNominated] = useState({
     movieList: [],
     count: 0,
-    max: false,
   });
+
+  const onDismiss = () => setVisible(false);
 
   const searchQuery = (query, pageNumber = 1) => {
     const searchText = query.trim();
@@ -50,23 +52,18 @@ function App() {
             query: searchText,
             response: requestResponse,
           }));
-        };
+        }
       });
     };
     fetchData();
   };
 
   const nominatedMovies = (movie) => {
-    setNominated((prev) => ({
-      ...prev,
-      movieList: [...prev.movieList, movie],
-      count: nominated.count + 1,
-    }));
-
-    if (nominated.count >= 4) {
+    if (nominated.movieList.length <= 4) {
       setNominated((prev) => ({
         ...prev,
-        max: true,
+        movieList: [...prev.movieList, movie],
+        count: nominated.count + 1,
       }));
     };
   };
@@ -80,8 +77,12 @@ function App() {
           movieList: nominated.movieList,
           count: nominated.count - 1,
         }));
-      }
+      };
     });
+
+    if (!visible) {
+      setVisible(true);
+    };
     return movieArray;
   };
 
@@ -91,6 +92,18 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <SearchBar query={searchQuery} />
+      {nominated.count & (nominated.count >= 5) ? (
+        <div>
+          <Alert
+            className="fade"
+            color="primary"
+            isOpen={visible}
+            toggle={onDismiss}
+          >
+            Your <b>five</b> nominations have been made. Thanks for Voting!
+          </Alert>
+        </div>
+      ) : null}
       <Row>
         <Col md={12} lg={6}>
           {data.query && data.query && data.error === null ? (

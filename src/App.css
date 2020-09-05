@@ -32,7 +32,7 @@ html {
 .nominations-list {
   color: #fefefe;
   font-size: 1.3rem;
-  margin: 4% 24% 8.5% 5%;
+  margin: 4% 24% 8.5% 0%;
 }
 
 .movie-card {
@@ -91,6 +91,11 @@ html {
   justify-content: center;
   margin: 2% 10% 2% 10%;
   gap: 1%;
+}
+
+.fade {
+  width: 76%;
+  margin: 2% 12%;
 }
 
 @media only screen and (max-width: 1000px) and (min-width: 600px){
