@@ -7,6 +7,7 @@ import SearchResults from "./components/searchResults";
 import NominatedMovies from "./components/NominatedMovies";
 import Pagination from "./components/Pagination";
 import { Col, Row, Alert } from "reactstrap";
+const apiKey = process.env.REACT_APP_API_KEY;
 
 function App() {
   const [visible, setVisible] = useState(true);
@@ -26,13 +27,13 @@ function App() {
 
   const onDismiss = () => setVisible(false);
 
-  window.onbeforeunload = function () {
+  window.onbeforeunload = () => {
     window.scrollTo(0, 0);
-  }
+  };
 
   const searchQuery = (query, pageNumber = 1) => {
     const searchText = query.trim();
-    const url = `http://www.omdbapi.com/?apikey=ad24814f&s=${searchText}&type=${data.type}&page=${pageNumber}`;
+    const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${searchText}&type=${data.type}&page=${pageNumber}`;
 
     async function fetchData() {
       axios.get(url).then((response) => {
