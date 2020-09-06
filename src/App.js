@@ -26,6 +26,10 @@ function App() {
 
   const onDismiss = () => setVisible(false);
 
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  }
+
   const searchQuery = (query, pageNumber = 1) => {
     const searchText = query.trim();
     const url = `http://www.omdbapi.com/?apikey=ad24814f&s=${searchText}&type=${data.type}&page=${pageNumber}`;
@@ -92,6 +96,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <SearchBar query={searchQuery} />
+      <h6>Welcome to the Shoppies. Here you can make upto <b>Five</b> movie nominations.</h6>
       {nominated.count & (nominated.count >= 5) ? (
         <div>
           <Alert
@@ -105,20 +110,26 @@ function App() {
         </div>
       ) : null}
       <Row>
-        <Col md={12} lg={6}>
+        <Col 
+          xs={{ size:12, order: 'last'}}
+          lg={{ size: 6, order: 'first' }}
+        >
           {data.query && data.query && data.error === null ? (
             <h3 className="results-list">{`Results for "${data.query}"`}</h3>
           ) : null}
-          <Pagination data={data} state={setData} fetchData={searchQuery} />
           <SearchResults
             data={data}
             query={data.query}
             nominateMovie={nominatedMovies}
             contender={nominated}
           />
+          <Pagination data={data} state={setData} fetchData={searchQuery} />
         </Col>
         {nominated && nominated.count > 0 ? (
-          <Col md={12} lg={6}>
+          <Col 
+            xs={{ size:12, order: 'first'}}
+            lg={{ size: 6, order: 'last' }}
+          >
             <h3 className="nominations-list">{`Nominated Movies`}</h3>
             <NominatedMovies data={nominated} deleteMovie={removeNomination} />
           </Col>
