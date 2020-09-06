@@ -62,7 +62,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   height: 100%;
   padding-left: 1rem;
   background: #302e41;

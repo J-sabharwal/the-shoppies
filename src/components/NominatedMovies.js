@@ -30,6 +30,7 @@ function NominatedMovies(props) {
                   style={{
                     borderRadius: "0 0.5rem 0.5rem 0",
                     backgroundColor: "rgba(182, 21, 64, 0.4)",
+                    border: "rgba(182, 21, 64, 0.4)",
                     fontSize: "80%",
                     height: "100%",
                   }}

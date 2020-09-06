@@ -7,6 +7,10 @@ function Movie(props) {
   const nominateMovie = props.toNominate;
   const isNominated = props.isNominated;
 
+  const movieURL = (id) => {
+    return window.open(`https://www.imdb.com/title/${imdbID}`, '_blank');
+  };
+
   return (
     <div>
       <div className="movie-card">
@@ -19,6 +23,22 @@ function Movie(props) {
           <div className="movie-info">
             <div className="movie-title">{Title}</div>
             <div className="movie-year">{Year}</div>
+          </div>
+          <div>
+            <Button
+              className="more-details"
+              style={{
+                borderRadius: "0 0 0 0",
+                border: "#ccae63",
+                backgroundColor: "#DAA520",
+                fontSize: "70%",
+                height: "100%",
+              }}
+              onClick={movieURL}
+              type="submit"
+            >
+              More Details
+            </Button>
           </div>
           <div>
             <Button
