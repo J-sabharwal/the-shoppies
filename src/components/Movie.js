@@ -27,6 +27,7 @@ function Movie(props) {
           <div>
             <Button
               className="more-details"
+              size="sm"
               style={{
                 borderRadius: "0 0 0 0",
                 border: "#ccae63",
@@ -37,13 +38,13 @@ function Movie(props) {
               onClick={movieURL}
               type="submit"
             >
-              More Details
             </Button>
           </div>
           <div>
             <Button
               className="nominate-btn"
               color="secondary"
+              size="sm"
               style={{
                 borderRadius: "0 0.5rem 0.5rem 0",
                 fontSize: "70%",
