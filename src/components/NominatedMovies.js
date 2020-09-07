@@ -1,48 +1,29 @@
 import React from "react";
-import { Button } from "reactstrap";
-import display from "../display.jpg";
+import Movie from "./Movie";
 
 function NominatedMovies(props) {
   const deleteMovie = props.deleteMovie;
   const moviesArray = props.data.movieList;
 
+  const classes = {
+    card: "nomination-card",
+    thumbnail: "movie-thumbnail",
+    info: "movie-info"
+  }
+
   return (
     moviesArray &&
     moviesArray.map((movie) => {
-      const { imdbID, Poster, Title, Year } = movie;
+      const { imdbID } = movie;
 
       return (
-        <div key={imdbID}>
-          <div className="nomination-card">
-            <article className="movie">
-              <img
-                className="movie-thumbnail"
-                src={Poster !== "N/A" ? Poster : display}
-                alt="Movie"
-              />
-              <div className="movie-info nominee">
-                <div className="movie-title">{Title}</div>
-                <div className="movie-year">{Year}</div>
-              </div>
-              <div>
-                <Button
-                  className="nominate-btn"
-                  style={{
-                    borderRadius: "0 0.5rem 0.5rem 0",
-                    backgroundColor: "rgba(182, 21, 64, 0.4)",
-                    border: "rgba(182, 21, 64, 0.4)",
-                    fontSize: "80%",
-                    height: "100%",
-                  }}
-                  onClick={() => deleteMovie(movie)}
-                  type="submit"
-                >
-                  Remove
-                </Button>
-              </div>
-            </article>
-          </div>
-        </div>
+        <Movie
+          key={imdbID}
+          {...movie}
+          deleteMovie={deleteMovie}
+          display="nominate"
+          classes={classes}
+        />
       );
     })
   );
