@@ -41,7 +41,7 @@ function App() {
 
   const searchQuery = (query, pageNumber = 1) => {
     const searchText = query.trim();
-    const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${searchText}&type=${searchResults.type}&page=${pageNumber}`;
+    const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchText}&type=${searchResults.type}&page=${pageNumber}`;
 
     axios.get(url).then((response) => {
       const responseData = response.data;
