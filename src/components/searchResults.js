@@ -1,11 +1,16 @@
 import React from "react";
-import "./searchResults.css";
 import Movie from "./Movie";
 
 function SearchResults(props) {
   const results = props.data;
-  const nominees = props.contender.movieList;
-  const nominationFunction = props.nominateMovie;
+  const nominees = props.nominees.movieList;
+  const nominateMovie = props.nominateMovie;
+
+  const classes = {
+    card: "movie-card",
+    thumbnail: "movie-thumbnail",
+    info: "movie-info",
+  };
 
   const isNominated = (movieId) => {
     let isANominee = false;
@@ -13,8 +18,6 @@ function SearchResults(props) {
     nominees.forEach((nominee) => {
       if (movieId === nominee.imdbID) {
         isANominee = true;
-      } else {
-        return isANominee;
       }
     });
     return isANominee;
@@ -36,9 +39,11 @@ function SearchResults(props) {
       return (
         <Movie
           key={movieId}
+          classes={classes}
           {...movie}
           isNominated={nominated}
-          toNominate={nominationFunction}
+          nominateMovie={nominateMovie}
+          display="search"
         />
       );
     });

@@ -1,25 +1,24 @@
 import React, { useState } from "react";
-import "./searchBar.css";
+import "./SearchBar.css";
 import { Col, Button, InputGroup, InputGroupAddon, Input } from "reactstrap";
 
 function SearchBar(props) {
   const [query, setQuery] = useState("");
+  const searchQuery = props.searchQuery;
 
   const handleSubmit = (event) => {
     setQuery(event.target.value);
   };
 
-  const Search = (event) => {
+  const search = (event) => {
     event.preventDefault();
-    props.query(query);
+    searchQuery(query);
     resetSearchField();
   };
 
   const onKeyPress = (event) => {
     if (event.which === 13) {
-      event.preventDefault();
-      props.query(query);
-      resetSearchField();
+      search(event);
     };
   };
 
@@ -41,8 +40,7 @@ function SearchBar(props) {
           <InputGroupAddon addonType="append">
             <Button
               color="warning"
-              onSubmit={Search}
-              onClick={Search}
+              onClick={search}
               type="submit"
             >
               <i className="fa fa-search"></i>
