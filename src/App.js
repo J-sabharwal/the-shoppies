@@ -39,11 +39,6 @@ function App() {
 
   const onDismiss = () => setVisible(false);
 
-  // this might not be entirely correct
-  window.onbeforeunload = () => {
-    window.scrollTo(0, 0);
-  };
-
   const searchQuery = (query, pageNumber = 1) => {
     const searchText = query.trim();
     const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${searchText}&type=${searchResults.type}&page=${pageNumber}`;
@@ -110,7 +105,7 @@ function App() {
       </header>
       <SearchBar searchQuery={searchQuery} />
       <h6>
-        Welcome to the Shoppies. Search for your favourite movies and nominate upto <b>Five</b> movies.
+        Welcome to The Shoppies. Search for your favourite movies and nominate upto <b>Five</b> movies.
       </h6>
       {nominated.count & (nominated.count >= 5) ? (
         <div>

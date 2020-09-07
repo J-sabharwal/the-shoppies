@@ -30,6 +30,7 @@ function SearchBar(props) {
       <Col md={12}>
         <InputGroup size="lg">
           <Input
+            autoFocus
             type="text"
             placeholder="Search by name"
             value={query}
