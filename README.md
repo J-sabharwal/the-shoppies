@@ -1,3 +1,8 @@
+## Deployed Application
+
+### Please visit the deployed demo here: [The Shoppies](https://shoppies.jaspinder.net/)
+
+
 ## Running Site
 
 In the project directory, you can run:
