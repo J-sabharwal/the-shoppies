@@ -3,17 +3,16 @@ import { Col, Row, Button } from "reactstrap";
 
 function Pagination(props) {
   const query = props.data.query;
-  const searchQuery = props.fetchData;
+  const searchQuery = props.searchQuery;
   const lastPage = props.data.totalPages;
-  let currentPage = props.data.currentPage;
+  const currentPage = props.data.currentPage;
 
   const changePage = (button) => {
     let newPageNumber;
 
     switch (button) {
       case "first":
-        newPageNumber = currentPage = 1;
-        searchQuery(query, newPageNumber);
+        searchQuery(query);
         break;
       case "previous":
         newPageNumber = currentPage - 1;
@@ -24,8 +23,7 @@ function Pagination(props) {
         searchQuery(query, newPageNumber);
         break;
       case "last":
-        newPageNumber = currentPage = lastPage;
-        searchQuery(query, newPageNumber);
+        searchQuery(query, lastPage);
         break;
       default:
         break;
@@ -55,6 +53,7 @@ function Pagination(props) {
               style={{
                 borderRadius: "0 0 0 0",
                 fontSize: "80%",
+                width: "5rem",
               }}
               type="submit"
               disabled={currentPage === 1 ? true : false}
@@ -68,6 +67,7 @@ function Pagination(props) {
               style={{
                 borderRadius: "0 0 0 0",
                 fontSize: "80%",
+                width: "5rem",
               }}
               type="submit"
               disabled={currentPage === lastPage ? true : false}
