@@ -84,7 +84,7 @@ function App() {
     listOfMovies.forEach((nominatedMovie, index) => {
       if (movieId === nominatedMovie.imdbID) {
         listOfMovies.splice(index, 1);
-        localStorage.setItem("nominatedInLocalStorage", listOfMovies);
+
         setNominated((prev) => ({
           ...prev,
           movieList: listOfMovies,
