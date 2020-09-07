@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./SearchBar.css";
 import { Col, Button, InputGroup, InputGroupAddon, Input } from "reactstrap";
 
 function SearchBar(props) {
