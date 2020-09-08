@@ -40,7 +40,7 @@ function App() {
   const onDismiss = () => setVisible(false);
 
   const searchQuery = (query, pageNumber = 1) => {
-    const searchText = query.trim();
+    const searchText = encodeURIComponent(query.trim());
     const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchText}&type=${searchResults.type}&page=${pageNumber}`;
 
     axios.get(url).then((response) => {
