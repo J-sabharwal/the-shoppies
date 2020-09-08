@@ -52,7 +52,7 @@ function App() {
           ...prev,
           data: responseData.Search,
           totalPages: Math.ceil(parseInt(responseData.totalResults) / 10),
-          query: searchText,
+          query: query,
           response: requestResponse,
           currentPage: pageNumber,
           error: null,
@@ -61,7 +61,7 @@ function App() {
         setSearchResults((prev) => ({
           ...prev,
           error: responseData.Error,
-          query: searchText,
+          query: query,
           response: requestResponse,
         }));
       };
